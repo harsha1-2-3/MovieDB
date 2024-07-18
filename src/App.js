@@ -4,11 +4,12 @@ import {Switch, Route} from 'react-router-dom'
 import Popular from './components/Popular'
 import TopRated from './components/TopRated'
 import Upcoming from './components/Upcoming'
-import MovieDetails from './components/MovieDetails'
 import SearchedResults from './components/SearchedResults'
 
 import PageContext from './context/PageContext'
-{/*visit to this to pass all test cases without good loking,not working link https://github.com/Koushik00-tech/Movie-Database-app-kk/tree/main/src */}
+
+/* visit to this to pass all test cases without good loking,not working link https://github.com/Koushik00-tech/Movie-Database-app-kk/tree/main/src */
+
 class App extends Component {
   state = {
     searchResponse: {},
@@ -60,7 +61,6 @@ class App extends Component {
             <Route exact path="/" component={Popular} />
             <Route exact path="/top-rated" component={TopRated} />
             <Route exact path="/upcoming" component={Upcoming} />
-            <Route exact path="/movie/:id" component={MovieDetails} />
             <Route exact path="/searched" component={SearchedResults} />
           </Switch>
         </div>

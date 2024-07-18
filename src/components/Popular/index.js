@@ -4,15 +4,13 @@ import MovieItem from '../MovieItem'
 import Pagination from '../Pagination'
 import './index.css'
 
-class Popular extends Component {
+class TopRated extends Component {
   state = {
     popularList: {},
   }
 
   componentDidMount() {
     this.getPopularMovies()
-    const {popularList} = this.state
-    console.log(popularList)
   }
 
   getUpdated = popularData => ({
@@ -29,12 +27,15 @@ class Popular extends Component {
   getPopularMovies = async (pageNo = 1) => {
     const API_KEY = '2b6bed2ca7d926b4afadfb343eebefad'
     const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageNo}`
-
     const options = {
       method: 'GET',
     }
-
     const response = await fetch(popularUrl, options)
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
     const popularData = await response.json()
     const updatedPopular = this.getUpdated(popularData)
 
@@ -44,7 +45,6 @@ class Popular extends Component {
 
   renderPopular = () => {
     const {popularList} = this.state
-
     if (!popularList.results) {
       return <div>Loading...</div>
     }
@@ -77,4 +77,4 @@ class Popular extends Component {
   }
 }
 
-export default Popular
+export default TopRated

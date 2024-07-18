@@ -3,7 +3,9 @@
   background-color: black;
   min-height: 100vh;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .MovieMainImg {
   height: 450px;
   width: 400px;

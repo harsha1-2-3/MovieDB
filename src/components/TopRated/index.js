@@ -33,6 +33,11 @@ class TopRated extends Component {
     }
 
     const response = await fetch(popularUrl, options)
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
     const popularData = await response.json()
     const updatedPopular = this.getUpdated(popularData)
 

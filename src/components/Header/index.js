@@ -37,7 +37,9 @@ const Header = props => {
 
   return (
     <nav className="HeaderBg">
-      <h1 className="LogoHead">MovieDB</h1>
+      <Link to="/" className="Link">
+        <h1 className="LogoHead">MovieDB</h1>
+      </Link>
       {renderSearchBar()}
       <ul className="LinksCont">
         <li>

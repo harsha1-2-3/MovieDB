@@ -7,7 +7,7 @@ class MovieDetails extends Component {
   state = {
     movieObj: {},
     castList: [],
-    genresList: [],
+
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class MovieDetails extends Component {
     const data = await response.json()
     const updatedObj = {
       backdropPath: data.backdrop_path,
-      genres: data.genres,
+    
       id: data.id,
       overview: data.overview,
       posterPath: data.poster_path,
@@ -38,11 +38,12 @@ class MovieDetails extends Component {
       runtime: data.runtime,
       title: data.title,
       rating: data.vote_average,
+      budget:data.budget,
     }
 
     this.setState({
       movieObj: updatedObj,
-      genresList: data.genres,
+      
     })
   }
 
@@ -79,7 +80,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const {castList, movieObj, genresList} = this.state
+    const {castList, movieObj} = this.state
     const {
       backdropPath,
       overview,
@@ -88,6 +89,7 @@ class MovieDetails extends Component {
       runtime,
       title,
       rating,
+      budget,
     } = movieObj
 
     return (
@@ -119,14 +121,9 @@ class MovieDetails extends Component {
                 <p className="DetailPara">{this.minsToHrs(runtime)}</p>
               </div>
               <div className="DetailCont">
-                <h1 className="DetailHead">Genres</h1>
-                <ul className="DetailParaUl">
-                  {genresList.map(genre => (
-                    <li key={genre.id} className="DetailParaLi">
-                      {genre.name}
-                    </li>
-                  ))}
-                </ul>
+                <h1 className="DetailHead">Budget</h1>
+                <p className="DetailPara">${budget}</p>
+                
               </div>
               <div className="DetailCont">
                 <h1 className="DetailHead">Release Date</h1>
